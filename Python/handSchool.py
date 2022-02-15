@@ -1,12 +1,12 @@
 import random
 
-
 """
-На входе функция получает параметр n - натуральное число.
-Необходимо сгенерировать n-массивов, заполнить их случайными числами, каждый массив имеет случайный размер.
-Размеры массивов не должны совпадать. Далее необходимо отсортировать массивы.
-Массивы с четным порядковым номером отсортировать по возрастанию, с нечетным порядковым номером - по убыванию.
-На выходе функция должна вернуть массив с отсортированными массивами.
+At the input, the function get natural number
+You need to generate n arrays of unique size, fill them with random numbers
+Then the arrays needed to be sorted:
+    Arrays with an even oridinal number should be sorted in ascending order
+    Other - in descending order
+Function returns the array of arrays
 """
 
 def q_sort(a: list):
@@ -19,6 +19,10 @@ def q_sort(a: list):
         return a
 
 def sorted_arrays_array(n: int):
+
+    if n < 1:
+        raise TypeError('Not natural number')
+
     main_array = [] # an array of arrays
     len_array = [] # set of len of arrays
     for i in range(n):
@@ -27,9 +31,9 @@ def sorted_arrays_array(n: int):
             num = random.randint(1, n * 2) # enlarge the bounds of picking
         len_array.append(num) # I don't think this should be used
     for i in range(n):
-        tmp = []
-        for j in range(len_array[i]): # fill the arrays with random numbers
-            tmp.append(round(random.random() * 1000))
+        tmp = [round(random.random() * 1000) for j in range(len_array[i])]
+#        for j in range(len_array[i]): # fill the arrays with random numbers
+#            tmp.append(round(random.random() * 1000))
         main_array.append(tmp)
 
     for i in range(n): # sort the arrays by the rules
