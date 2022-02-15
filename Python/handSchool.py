@@ -22,36 +22,42 @@ def sorted_arrays_array(n: int):
     main_array = [] # an array of arrays
     len_array = [] # set of len of arrays
     for i in range(n):
-        num = random.randint(1, n)
-        while num in len_array:
-            num = random.randint(1, n * 2)
+        num = random.randint(1, n) # choose a random number
+        while num in len_array: # if the len is already in the array change it
+            num = random.randint(1, n * 2) # enlarge the bounds of picking
         len_array.append(num) # I don't think this should be used
     for i in range(n):
         tmp = []
-        for j in range(len_array[i]):
+        for j in range(len_array[i]): # fill the arrays with random numbers
             tmp.append(round(random.random() * 1000))
         main_array.append(tmp)
 
-    for i in range(n):
+    for i in range(n): # sort the arrays by the rules
         if i % 2 == 0:
             main_array[i] = q_sort(main_array[i])
         else:
             main_array[i] = q_sort(main_array[i])[::-1]
     return main_array
 
-def main():
-    result = sorted_arrays_array(int(input()))
+def test_func(result: list) -> bool:
     test = []
     for i in result:
-        if len(i) not in test:
-            test.append(len(i))
+        if len(i) in test:
+            return False
         else:
-            print("Found it...")
-            return
-    print(F"Seems like working...\nLengths are: {test}")
+            test.append(len(i))
+    return True
 
-#    for i in result:
-#        print(F"len of array is {len(i)}\n")
+
+def main():
+    result = sorted_arrays_array(int(input()))
+
+    if not test_func(result):
+        print("You failed this task")
+        return
+
+    for i in result:
+        print(F"len of array is {len(i)}\n{i}")
 
 if __name__ == '__main__':
     main()
