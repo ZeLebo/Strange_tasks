@@ -22,7 +22,10 @@ def sorted_arrays_array(n : int):
     main_array = [] # an array of arrays
     len_array = [] # set of len of arrays
     for i in range(n):
-        len_array.append(random.randint(1, n ** 2)) # I don't think this should be used
+        num = random.randint(1, n)
+        while num in len_array:
+            num = random.randint(1, n * 2)
+        len_array.append(num) # I don't think this should be used
     for i in range(n):
         tmp = []
         for j in range(len_array[i]):
@@ -38,8 +41,17 @@ def sorted_arrays_array(n : int):
 
 def main():
     result = sorted_arrays_array(int(input()))
+    test = []
     for i in result:
-        print(F"len of array is {len(i)}\n{i}")
+        if len(i) not in test:
+            test.append(len(i))
+        else:
+            print("Found it...")
+            return
+    print(F"Seems like working...\nLengths are: {test}")
+
+#    for i in result:
+#        print(F"len of array is {len(i)}\n")
 
 if __name__ == '__main__':
     main()
