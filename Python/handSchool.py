@@ -9,7 +9,7 @@ import random
 На выходе функция должна вернуть массив с отсортированными массивами.
 """
 
-def q_sort(a : list):
+def q_sort(a: list):
     if a:
         pivot = a[random.choice(range(0, len(a)))]
         less = q_sort([i for i in a if i < pivot])
@@ -18,7 +18,7 @@ def q_sort(a : list):
     else:
         return a
 
-def sorted_arrays_array(n : int):
+def sorted_arrays_array(n: int):
     main_array = [] # an array of arrays
     len_array = [] # set of len of arrays
     for i in range(n):
