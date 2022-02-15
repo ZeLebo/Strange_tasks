@@ -31,9 +31,7 @@ def sorted_arrays_array(n: int):
             num = random.randint(1, n * 2) # enlarge the bounds of picking
         len_array.append(num) # I don't think this should be used
     for i in range(n):
-        tmp = [round(random.random() * 1000) for j in range(len_array[i])]
-#        for j in range(len_array[i]): # fill the arrays with random numbers
-#            tmp.append(round(random.random() * 1000))
+        tmp = [round(random.random() * 1000) for j in range(len_array[i])] # fill the array with random numbers
         main_array.append(tmp)
 
     for i in range(n): # sort the arrays by the rules
@@ -52,11 +50,26 @@ def test_func(result: list) -> bool:
             test.append(len(i))
     return True
 
+def test_sorted(result : list) -> bool:
+    for i in result:
+        if i % 2 == 0:
+            tmp = result[i][:]
+            tmp.sort()
+            if tmp != result[i]:
+                return False
+        else:
+            tmp = result[i][::-1]
+            tmp.sort()
+            if tmp != result[i][::-1]:
+                return False
+    return True
+
+
 
 def main():
     result = sorted_arrays_array(int(input()))
 
-    if not test_func(result):
+    if not test_func(result) or test_sorted(result):
         print("You failed this task")
         return
 
