@@ -28,8 +28,8 @@ def sorted_arrays_array(n: int):
     len_array = []  # set of len of arrays
     for i in range(n):
         num = random.randint(1, n)  # choose a random number
-        while (num := random.randint(1, 2 * n)) in len_array:  pass # if the len is already in the array change it
-            #num = random.randint(1, n * 2)  # enlarge the bounds of picking
+        while num in len_array:  # if the len is already in the array change it
+            num = random.randint(1, n * 2)  # enlarge the bounds of picking
         len_array.append(num)  # I don't think this should be used
     for i in range(n):
         tmp = [round(random.random() * 1000) for _ in range(len_array[i])]  # fill the array with random numbers
