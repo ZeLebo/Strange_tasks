@@ -10,36 +10,30 @@ Function returns the array of arrays
 """
 
 
-def q_sort(a: list):
-    if a:
-        pivot = a[random.choice(range(0, len(a)))]
-        less = q_sort([i for i in a if i < pivot])
-        greater = q_sort([i for i in a if i > pivot])
-        return less + [i for i in a if i == pivot] + greater
-    else:
-        return a
-
-
 def sorted_arrays_array(n: int):
+    if not isinstance(n, int):
+        raise TypeError('input number must be an integer')
     if n < 1:
-        raise TypeError('Not natural number')
+        raise ValueError('Not natural number')
 
     main_array = []  # an array of arrays
-    len_array = []  # set of len of arrays
+    len_array = set()  # set of len of arrays
     for i in range(n):
         num = random.randint(1, n)  # choose a random number
         while num in len_array:  # if the len is already in the array change it
             num = random.randint(1, n * 2)  # enlarge the bounds of picking
-        len_array.append(num)  # I don't think this should be used
+        len_array.add(num)
     for i in range(n):
-        tmp = [round(random.random() * 1000) for _ in range(len_array[i])]  # fill the array with random numbers
+        len_array = list(len_array)
+        # fill the array with random numbers
+        tmp = [round(random.random() * 1000) for _ in range(len_array[i])]
         main_array.append(tmp)
 
     for i in range(n):  # sort the arrays by the rules
         if i % 2 == 0:
-            main_array[i] = q_sort(main_array[i])
+            main_array[i].sort()
         else:
-            main_array[i] = q_sort(main_array[i])[::-1]
+            main_array[i].sort(reverse=True)
     return main_array
 
 
@@ -63,9 +57,9 @@ def test_sorted(result: list):
                 print(i)
                 return False
         else:
-            tmp = result[i][::-1]
-            tmp.sort()
-            if tmp != result[i][::-1]:
+            tmp = result[i][:]
+            tmp.sort(reverse=True)
+            if tmp != result[i]:
                 print(i)
                 return False
     return True
@@ -76,6 +70,8 @@ def main():
 
     if test_array_size(result) and test_sorted(result):
         print("The task is done")
+        for i in result:
+            print(F"Array: {i}")
         return
 
     print("You failed this task")
