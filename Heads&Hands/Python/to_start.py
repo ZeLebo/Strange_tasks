@@ -1,4 +1,4 @@
-from handSchool import sorted_arrays_array as test
+from test_task import sorted_arrays_array as test
 
 def test_array_size(result: list):
     test = []
