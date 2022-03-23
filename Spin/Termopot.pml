@@ -11,13 +11,6 @@
     bool is_opened;
     bool is_locked;
 
-    bool pressed_1;
-    bool pressed_2;
-    bool pressed_3;
-    
-    bool equals_1;
-    bool equals_2;
-    bool equals_3;
 
 // Controls
 	bool top_call;
@@ -26,6 +19,15 @@
 	bool down_call;
 	bool top_door_closed;
 	bool bot_door_closed;
+
+
+    bool pressed_1;
+    bool pressed_2;
+    bool pressed_3;
+    
+    bool equals_1;
+    bool equals_2;
+    bool equals_3;
 	
 // ============================================
 // ================ Output signals ============
