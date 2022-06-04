@@ -1,0 +1,45 @@
+def main():
+    import os
+    from time import sleep
+    os.system("python3 main.py --back --notion")
+    sleep(1)
+    os.system("python3 main.py --biceps --notion")
+    sleep(1)
+    os.system("python3 main.py --triceps --notion")
+    sleep(1)
+    os.system("python3 main.py --arms --notion")
+    sleep(1)
+    os.system("python3 main.py --back-biceps --notion")
+    sleep(1)
+    os.system("python3 main.py --pectoral-triceps --notion")
+    sleep(1)
+    os.system("python3 main.py --shoulder --notion")
+    sleep(1)
+    os.system("python3 main.py --legs --notion")
+    sleep(1)
+    os.system("python3 main.py --legs-shoulder --notion")
+    sleep(1)
+
+    # all the above with --term
+    os.system("python3 main.py --back --term")
+    sleep(1)
+    os.system("python3 main.py --biceps --term")
+    sleep(1)
+    os.system("python3 main.py --triceps --term")
+    sleep(1)
+    os.system("python3 main.py --arms --term")
+    sleep(1)
+    os.system("python3 main.py --back-biceps --term")
+    sleep(1)
+    os.system("python3 main.py --pectoral-triceps --term")
+    sleep(1)
+    os.system("python3 main.py --legs-shoulder --term")
+    sleep(1)
+    os.system("python3 main.py --biceps-triceps --term")
+    sleep(1)
+    os.system("python3 main.py --legs --term")
+    sleep(1)
+
+
+if __name__ == "__main__":
+    main()
