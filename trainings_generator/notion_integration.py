@@ -14,6 +14,18 @@ default_headers = {
 }
 
 
+def get_database():
+    get_headers = {
+        "Authorization": "Bearer " + integration_token,
+        "Content-Type": "application/json",
+        "Notion-Version": "2022-02-22"
+    }
+    get_url = f"https://api.notion.com/v1/databases/{database_id}/query"
+    res = r.request("POST", get_url, headers=get_headers)
+    with open("database.json", "w") as f:
+        json.dump(res.json(), f, indent=4)
+
+
 def create_page(list_exersice=None, tags=None, db_id=database_id, headers=None):
     if headers is None:
         headers = default_headers
@@ -35,15 +47,10 @@ def create_page(list_exersice=None, tags=None, db_id=database_id, headers=None):
                         }
 
                     }
-                    # {
-                    #     "text": {
-                    #         "content": datetime.datetime.now().strftime("%m.%d.%Y")
-                    #     }
-                    # }
                 ]
             },
             "Tags": {
-                "multi_se lect": []
+                "multi_select": []
             }
         },
         "children": []
